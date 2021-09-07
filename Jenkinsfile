@@ -16,7 +16,7 @@ pipeline {
             steps {
                 sh '''
                     echo "$AWS_ACCESS_KEY_ID"
-                    // terraform apply --auto-approve
+                    terraform apply --auto-approve
                 '''
             }
         }
