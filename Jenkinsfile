@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'kaarla/terraform-terratest' } }
+    agent { docker 'kaarla/terraform-terratest' }
     stages {
         stage('validate') {
             steps {
