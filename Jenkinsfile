@@ -4,6 +4,8 @@ pipeline {
         stage('validate') {
             steps {
                 sh '''
+                    echo ${env.WORKSPACE}
+
                     terraform init
                     echo "TERRAFORM VALIDATE"
                     terraform validate
@@ -13,7 +15,8 @@ pipeline {
         stage('terratest') {
             steps {
                 sh '''
-                    terraform apply --auto-approve
+                    echo $AWS_KEY_ID
+                    // terraform apply --auto-approve
                 '''
             }
         }
