@@ -4,7 +4,7 @@ pipeline {
         stage('validate') {
             steps {
                 sh '''
-                    echo ${env.WORKSPACE}
+                    echo "${env.WORKSPACE}"
 
                     terraform init
                     echo "TERRAFORM VALIDATE"
