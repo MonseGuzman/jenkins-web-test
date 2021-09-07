@@ -4,6 +4,8 @@ pipeline {
         stage('validate') {
             steps {
                 sh '''
+                    ls
+                    pwd
                     echo "$AWS_ACCESS_KEY_ID"
 
                     terraform init
