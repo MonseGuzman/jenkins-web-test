@@ -13,9 +13,7 @@ pipeline {
         stage('terratest') {
             steps {
                 sh '''
-                    export HELLO="monse"
-                    echo "this is a example of steps"
-                    echo $HELLO
+                    terraform apply --auto-approve
                 '''
             }
         }
