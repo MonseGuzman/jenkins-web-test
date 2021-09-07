@@ -16,15 +16,15 @@ pipeline {
                 '''
             }
         }
-        // stage('versioning') {
-        //     steps {
-        //         go version
-        //     }
-        // }
-        // stage('publish') {
-        //     steps {
-        //         terraform --version
-        //     }
-        // }
+        stage('versioning') {
+            steps {
+                sh 'go version'
+            }
+        }
+        stage('publish') {
+            steps {
+                sh 'terraform --version'
+            }
+        }
     }
 }
