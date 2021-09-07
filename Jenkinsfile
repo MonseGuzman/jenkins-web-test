@@ -4,7 +4,7 @@ pipeline {
         stage('validate') {
             steps {
                 sh '''
-                cat <<EOF ~/.aws/credentials
+                cat <<EOF > ${env.WORKSPACE}/.aws/credentials
                 [default]
                 aws_access_key_id=$AWS_KEY_ID
                 aws_secret_access_key=$AWS_SECRET_KEY
