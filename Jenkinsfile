@@ -13,8 +13,8 @@ pipeline {
                 // '''
 
                 sh '''
-                    echo credentials(AWS_KEY_ID)
-                    echo $AWS_KEY_ID
+                    echo "credentials(AWS_KEY_ID)"
+                    echo "$AWS_KEY_ID"
                     // terraform init
                     // echo "TERRAFORM VALIDATE"
                     // terraform validate
