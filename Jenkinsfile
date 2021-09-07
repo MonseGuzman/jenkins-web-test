@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('validate') {
             steps {
-                sh 'echo "hello world'
+                echo "hello world"
+                // sh 'echo "hello world'
             }
         }
         stage('terratest') {
@@ -17,12 +18,12 @@ pipeline {
         }
         stage('vversioning') {
             steps {
-                sh 'go version'
+                go version
             }
         }
         stage('publish') {
             steps {
-                sh 'terraform --version'
+                terraform --version
             }
         }
     }
