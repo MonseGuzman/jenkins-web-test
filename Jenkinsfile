@@ -3,8 +3,11 @@ pipeline {
     stages {
         stage('validate') {
             steps {
-                echo "hello world"
-                // sh 'echo "hello world'
+                sh '''
+                    terraform init
+                    echo "TERRAFORM VALIDATE"
+                    terraform validate
+                '''
             }
         }
         stage('terratest') {
