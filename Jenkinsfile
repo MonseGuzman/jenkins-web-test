@@ -21,6 +21,10 @@ pipeline {
                     echo "$AWS_ACCESS_KEY_ID"
                     terraform apply --auto-approve
                 '''
+                sh '''
+                    echo "$AWS_ACCESS_KEY_ID"
+                    terraform destroy --auto-approve
+                '''
             }
         }
         stage('versioning') {
