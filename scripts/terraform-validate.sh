@@ -21,6 +21,8 @@ terraform fmt -check -recursive
 status=$?
 if [ $status -eq 3 ]; then
     echo "##[error]*****terraform formatting issues found, fix your formatting with terraform fmt -recursive to proceed.*****"
+else
+    echo "##[debug]****terraform formatting passed****"
 fi
 
 exit $status
