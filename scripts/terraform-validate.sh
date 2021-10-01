@@ -9,7 +9,7 @@
 echo "##[command]terraform init -input=false"
 terraform init -input=false
     
-if [ "$SKIP_TF_VALIDATE" = "False" ]; then
+if [ "${SKIP_TF_VALIDATE}" = "False" ]; then
     echo "##[command]terraform validate"
     terraform validate
 else
