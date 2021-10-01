@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh '''
                     chmod +x scripts/terraform-validate.sh
-                    ./terraform-validate.sh
+                    ./scripts/terraform-validate.sh
                 '''
             }
         }
