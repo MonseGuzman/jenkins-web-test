@@ -9,9 +9,8 @@ pipeline {
         stage('validate') {
             steps {
                 sh '''
-                    terraform init
-                    echo "TERRAFORM VALIDATE"
-                    terraform validate
+                    chmod +x scripts/terraform-validate.sh
+                    ./terraform-validate.sh
                 '''
             }
         }
@@ -19,11 +18,11 @@ pipeline {
             steps {
                 sh '''
                     echo "$AWS_ACCESS_KEY_ID"
-                    terraform apply --auto-approve
+                    // terraform apply --auto-approve
                 '''
                 sh '''
                     echo "$AWS_ACCESS_KEY_ID"
-                    terraform destroy --auto-approve
+                    // terraform destroy --auto-approve
                 '''
             }
         }
