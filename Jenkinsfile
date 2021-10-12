@@ -1,3 +1,7 @@
+
+// Jenkinsfile
+@Library('library-example') _
+
 pipeline {
     agent { docker 'kaarla/terraform-terratest' }
     environment {
@@ -24,6 +28,7 @@ pipeline {
                 //     echo "$AWS_ACCESS_KEY_ID"
                 //     // terraform destroy --auto-approve
                 // '''
+                example 'terratest'
             }
         }
         stage('versioning') {
