@@ -14,8 +14,8 @@ pipeline {
             steps {
                 linux 'validate'
                 
-                example 
-                
+                example()
+
                 sh '''
                     echo "hola"
                 '''
