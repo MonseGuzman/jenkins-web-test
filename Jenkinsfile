@@ -1,9 +1,9 @@
-
 // Jenkinsfile
 @Library('library-example') _
 
 pipeline {
-    agent { docker 'kaarla/terraform-terratest' }
+    agent any
+    // agent { docker 'kaarla/terraform-terratest' }
     environment {
         AWS_ACCESS_KEY_ID="${AWS_KEY_ID}"
         AWS_SECRET_ACCESS_KEY="${AWS_SECRET_KEY}"
@@ -19,12 +19,6 @@ pipeline {
                 sh '''
                     echo "hola"
                 '''
-                // sh '''
-                //     chmod +x scripts/terraform-validate.sh
-                //     ls 
-                //     pwd
-                //     sh ./scripts/terraform-validate.sh
-                // '''
             }
         }
         stage('terratest') {
@@ -54,11 +48,15 @@ pipeline {
             }
         }
         stage('publish') {
-            when {
-                branch 'master'
-            }
+            // when {
+            //     branch 'master'
+            // }
             steps {
-                sh 'terraform --version'
+                sh '''
+                    echo "##[command]Install tflint"
+                    source install-tools.sh; cache_tool_installer tflint 0.20.3
+                '''
+                sh 'tflint -v'
             }
         }
     }
