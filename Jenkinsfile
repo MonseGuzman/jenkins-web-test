@@ -15,6 +15,7 @@ pipeline {
                 sh '''
                     chmod +x scripts/terraform-validate.sh
                     ls 
+                    pwd
                     sh ./scripts/terraform-validate.sh
                 '''
             }
@@ -24,6 +25,7 @@ pipeline {
                 example 'terratest'
                 sh '''
                     ls
+                    pwd
                     echo "$AWS_ACCESS_KEY_ID"
                 '''
                 // sh '''
