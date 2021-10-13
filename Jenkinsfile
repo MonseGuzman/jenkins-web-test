@@ -28,6 +28,7 @@ pipeline {
                 sh '''
                     ls
                     pwd
+                    ls scripts
                     echo "$AWS_ACCESS_KEY_ID"
                 '''
                 // sh '''
