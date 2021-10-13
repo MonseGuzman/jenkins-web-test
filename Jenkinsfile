@@ -12,12 +12,17 @@ pipeline {
     stages {
         stage('validate') {
             steps {
+                example 'terratest'
                 sh '''
-                    chmod +x scripts/terraform-validate.sh
                     ls 
                     pwd
-                    sh ./scripts/terraform-validate.sh
                 '''
+                // sh '''
+                //     chmod +x scripts/terraform-validate.sh
+                //     ls 
+                //     pwd
+                //     sh ./scripts/terraform-validate.sh
+                // '''
             }
         }
         stage('terratest') {
@@ -26,10 +31,11 @@ pipeline {
 
                 example 'terratest'
                 sh '''
+                    cd scripts
                     ls
-                    pwd
-                    ls scripts
-                    echo "$AWS_ACCESS_KEY_ID"
+
+                    chmod +x scripts/terraform-validate.sh
+                    sh ./scripts/terraform-validate.sh
                 '''
                 // sh '''
                 //     echo "$AWS_ACCESS_KEY_ID"
