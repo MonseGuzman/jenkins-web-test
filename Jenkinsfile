@@ -28,10 +28,10 @@ pipeline {
             }
         }
         stage('terratest') {
+            when {
+                branch 'master'
+            }
             steps {
-	            // checkout scm
-
-                // example 'terratest'
                 sh '''
                     ls scripts
                     ls
@@ -64,6 +64,7 @@ pipeline {
     }
     post {
         always {
+            echo "Cleaning up Workspace"
             deleteDir() /* clean up our workspace */
         }
     }
