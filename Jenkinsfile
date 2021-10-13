@@ -12,10 +12,9 @@ pipeline {
     stages {
         stage('validate') {
             steps {
-                example 'terratest'
+                example 'validate'
                 sh '''
-                    ls 
-                    pwd
+                    echo "hola"
                 '''
                 // sh '''
                 //     chmod +x scripts/terraform-validate.sh
