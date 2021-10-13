@@ -26,9 +26,9 @@ pipeline {
         }
         stage('terratest') {
             steps {
-	            checkout scm
+	            // checkout scm
 
-                example 'terratest'
+                // example 'terratest'
                 sh '''
                     ls scripts
                     ls
