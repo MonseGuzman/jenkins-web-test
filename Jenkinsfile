@@ -53,6 +53,8 @@ pipeline {
             // }
             steps {
                 sh '''
+                    cd scripts
+                    
                     echo "##[command]Install tflint"
                     source install-tools.sh; cache_tool_installer tflint 0.20.3
                 '''
