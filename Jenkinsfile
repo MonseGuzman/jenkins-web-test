@@ -12,7 +12,10 @@ pipeline {
     stages {
         stage('validate') {
             steps {
-                example 'validate'
+                linux 'validate'
+                
+                example 
+                
                 sh '''
                     echo "hola"
                 '''
