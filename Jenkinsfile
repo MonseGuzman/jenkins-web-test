@@ -21,14 +21,15 @@ pipeline {
         }
         stage('terratest') {
             steps {
+                example 'terratest'
                 sh '''
+                    ls
                     echo "$AWS_ACCESS_KEY_ID"
                 '''
                 // sh '''
                 //     echo "$AWS_ACCESS_KEY_ID"
                 //     // terraform destroy --auto-approve
                 // '''
-                example 'terratest'
             }
         }
         stage('versioning') {
