@@ -31,7 +31,7 @@ pipeline {
 
                 example 'terratest'
                 sh '''
-                    cd scripts
+                    ls scripts
                     ls
 
                     chmod +x scripts/terraform-validate.sh
