@@ -32,10 +32,6 @@ pipeline {
         stage('terratest') {
             steps {
                 linux 'terratest'
-
-                sh '''
-                    go get -u github.com/git-chglog/git-chglog/cmd/git-chglog
-                '''
                 
                 terratest()
                 // terraform destroy --auto-approve
@@ -44,6 +40,10 @@ pipeline {
         stage('versioning') {
             steps {
                 linux 'versioning'
+
+                sh '''
+                    go get -u github.com/git-chglog/git-chglog/cmd/git-chglog
+                '''
 
                 versionTagging()
             }
