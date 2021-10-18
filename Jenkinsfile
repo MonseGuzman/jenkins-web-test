@@ -22,26 +22,13 @@ pipeline {
                 linux 'validate'
                 
                 validate()
-
-                sh '''
-                    echo "hola"
-                '''
             }
         }
         stage('terratest') {
-            when {
-                branch 'master'
-            }
             steps {
                 linux 'terratest'
 
-                sh '''
-                    ls scripts
-                    ls
-
-                    chmod +x scripts/terraform-validate.sh
-                    sh ./scripts/terraform-validate.sh
-                '''
+                terratest()
                 // sh '''
                 //     echo "$AWS_ACCESS_KEY_ID"
                 //     // terraform destroy --auto-approve
