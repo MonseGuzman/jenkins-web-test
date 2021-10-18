@@ -13,7 +13,3 @@ resource "aws_s3_bucket" "b" {
   bucket = "monse-${random_string.prefix.result}"
   acl    = "private"
 }
-
-output "name" {
-  value = "Hello World"
-}
