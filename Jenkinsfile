@@ -36,9 +36,6 @@ pipeline {
             }
         }
         stage('versioning') {
-            when {
-                branch 'master'
-            }
             steps {
                 linux 'versioning'
 
