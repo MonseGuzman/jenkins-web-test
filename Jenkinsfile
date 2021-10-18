@@ -18,7 +18,11 @@ pipeline {
                 example()
             }
         }
-        stage('validate') {
+        // It's already test :D 
+        stage('validate') { 
+            when {
+                branch 'master'
+            }
             steps {
                 linux 'validate'
                 
@@ -29,10 +33,11 @@ pipeline {
             steps {
                 linux 'terratest'
 
-                // terratest()
                 sh '''
-                    git-chglog --version
+                    go get -u github.com/git-chglog/git-chglog/cmd/git-chglog
                 '''
+                
+                terratest()
                 // terraform destroy --auto-approve
             }
         }
