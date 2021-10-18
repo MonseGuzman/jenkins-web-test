@@ -42,7 +42,7 @@ pipeline {
             steps {
                 linux 'versioning'
 
-                sh 'go version'
+                versionTagging()
             }
         }
         stage('publish') {
