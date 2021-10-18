@@ -2,8 +2,8 @@
 @Library('library-example') _
 
 pipeline {
-    agent any
-    // agent { docker 'kaarla/terraform-terratest' }
+    // agent any
+    agent { docker 'kaarla/terraform-terratest' }
     environment {
         AWS_ACCESS_KEY_ID="${AWS_KEY_ID}"
         AWS_SECRET_ACCESS_KEY="${AWS_SECRET_KEY}"
@@ -14,7 +14,7 @@ pipeline {
             steps {
                 linux 'validate'
                 
-                example()
+                validate()
 
                 sh '''
                     echo "hola"
@@ -26,6 +26,8 @@ pipeline {
                 branch 'master'
             }
             steps {
+                linux 'terratest'
+
                 sh '''
                     ls scripts
                     ls
@@ -44,21 +46,24 @@ pipeline {
                 branch 'master'
             }
             steps {
+                linux 'versioning'
+
                 sh 'go version'
             }
         }
         stage('publish') {
-            // when {
-            //     branch 'master'
-            // }
+            when {
+                branch 'master'
+            }
             steps {
+                linux 'publish'
+
                 sh '''
                     cd scripts
                     
                     echo "##[command]Install tflint"
                     source install-tools.sh; cache_tool_installer tflint 0.20.3
                 '''
-                sh 'tflint -v'
             }
         }
     }
