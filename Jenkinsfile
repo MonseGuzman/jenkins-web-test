@@ -29,11 +29,11 @@ pipeline {
             steps {
                 linux 'terratest'
 
-                terratest()
-                // sh '''
-                //     echo "$AWS_ACCESS_KEY_ID"
-                //     // terraform destroy --auto-approve
-                // '''
+                // terratest()
+                sh '''
+                    git-chglog --version
+                '''
+                // terraform destroy --auto-approve
             }
         }
         stage('versioning') {
