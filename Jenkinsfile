@@ -10,6 +10,13 @@ pipeline {
         AWS_SESSION_TOKEN="${AWS_TOKEN}"
     }
     stages {
+        stage('setup') {
+            steps {
+                linux 'setup'
+                
+                example()
+            }
+        }
         stage('validate') {
             steps {
                 linux 'validate'
