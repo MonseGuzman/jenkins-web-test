@@ -42,7 +42,7 @@ pipeline {
                 linux 'versioning'
 
                 sh '''
-                    go get -u github.com/git-chglog/git-chglog/cmd/git-chglog
+                    go install github.com/git-chglog/git-chglog/cmd/git-chglog@latest
                 '''
 
                 versionTagging()
