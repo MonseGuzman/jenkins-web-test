@@ -3,7 +3,7 @@
 
 validate()
 
-
+terratest()
 
 // pipeline {
 //     // agent any
