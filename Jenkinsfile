@@ -1,9 +1,28 @@
 // Jenkinsfile
 @Library('library-example@main') _
 
-validate()
+pipeline {
+    agent { docker 'kaarla/terraform-terratest' }
+    environment {
+        AWS_ACCESS_KEY_ID="${AWS_KEY_ID}"
+        AWS_SECRET_ACCESS_KEY="${AWS_SECRET_KEY}"
+        AWS_SESSION_TOKEN="${AWS_TOKEN}"
+        TFE_TOKEN="${TFE_TOKEN}"
+    }
 
-terratest()
+    validate()
+
+    terratest()
+
+
+    post {
+        always {
+            echo "Cleaning up Workspace"
+            deleteDir() /* clean up our workspace */
+        }
+    }
+
+}
 
 // pipeline {
 //     // agent any
