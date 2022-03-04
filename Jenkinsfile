@@ -1,4 +1,4 @@
 // Jenkinsfile
-library "library-example@$BRANCH_NAME"
+@Library('library-example@main')
 
 SSMpipeline()
